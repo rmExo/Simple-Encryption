@@ -1,0 +1,30 @@
+import java.util.Scanner;
+public class Encrypt {
+
+    public static void main(String abcde){
+        Scanner sc = new Scanner(System.in);
+        String key = sc.next();
+        String encryptee = sc.next();
+        String encrypted = new String("");
+        String fin = new String("");
+        char [] keyN = new char[key.length()];
+        char temp;
+
+        for(int i = 0; i< key.length();i++){
+            keyN[i] = key.charAt(i);
+        }
+        for(int j =0; j < encryptee.length();j++){
+            if((encryptee.charAt(j)>59) && (encryptee.charAt(j) < 90)){
+             encrypted += encryptee.charAt(j);
+            }
+        }
+        for(int k=0; k < encrypted.length(); k++){
+             temp = (char) (encrypted.charAt(k) + keyN[k%keyN.length]);
+            if( temp > 90){
+                temp -= 26;
+            }
+            fin += (char) temp;
+        }
+
+    }
+}
