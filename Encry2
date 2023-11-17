@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class Encrypt {
+
+    public static void main(String[] abcde){
+        Scanner sc = new Scanner(System.in);
+        // somehow this input works, not exactly sure but it picks up the spaces without screwing itself over.
+        String key = sc.next();
+        String encryptee = sc.nextLine();
+         encryptee = sc.nextLine();
+         // more variables for storage
+        String encrypted = new String("");
+        String fin = new String("");
+        // array for the repetition
+        char [] keyN = new char[key.length()];
+        // value to hold for cycle 
+        char temp;
+        // sticking the key in the array
+        for(int i = 0; i< key.length();i++){
+            keyN[i] = key.charAt(i);
+        }
+        // eliminating spaces
+        for(int j =0; j < encryptee.length();j++){
+            if((encryptee.charAt(j)>59) && (encryptee.charAt(j) < 91)){
+             encrypted += encryptee.charAt(j);
+            // System.out.println(encrypted.charAt(j));
+            }
+        }
+        //adding the key to the message, and adding overflow
+        for(int k=0; k < encrypted.length(); k++){
+             temp = (char) (encrypted.charAt(k) + (keyN[k%keyN.length])-65);
+            // System.out.println(temp);
+            if( temp > 90){
+                temp -= 26;
+            }
+            fin += (char) temp;
+        }
+        //final print statement. 
+    System.out.println(fin);
+    }
+}
